@@ -1,4 +1,12 @@
 import streamlit as st
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #f5f5f5;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 from streamlit_lottie import st_lottie
 import json
 
