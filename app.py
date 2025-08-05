@@ -2,11 +2,15 @@ import streamlit as st
 st.markdown("""
     <style>
     .stApp {
-        background-color: #f5f5f5;
+        background-color: black;
+        color: white;
+    }
+    
+    iframe {
+        background-color: transparent !important;
     }
     </style>
 """, unsafe_allow_html=True)
-
 from streamlit_lottie import st_lottie
 import json
 
