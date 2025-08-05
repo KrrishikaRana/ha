@@ -8,7 +8,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 # Load your animation (make sure 'mood.json' is in the same folder)
-lottie_animation = load_lottiefile("mood.json")
+lottie_animation = load_lottiefile("jj.json")
 
 # Optional: Page config
 st.set_page_config(page_title="My App", page_icon="✨", layout="wide")
@@ -20,8 +20,11 @@ with col1:
     st_lottie(lottie_animation, height=200)
 
 with col2:
-    st.markdown("### Welcome to the App")
-    st.write("This is your Streamlit application with a top-left animation.")
+   
+    col1, col2, col3 = st.columns([1, 2, 1])  # Center column is twice as big
 
+with col2:
+    st.title("How's your mood today?")
+   
 # Add more sections below as needed
-st.write("Add your widgets, logic, and content below here.")
+
