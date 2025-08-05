@@ -10,7 +10,7 @@ def load_lottie_url(url):
     return r.json()
 
 # Load a Lottie animation (this one is a guy waving, but you can change the URL)
-lottie_animation = load_lottie_url("https://assets5.lottiefiles.com/packages/lf20_V9t630.json")
+lottie_animation = load_lottie_url("https://assets4.lottiefiles.com/packages/lf20_ZV1fn5lhl.json")
 
 # Set page config
 st.set_page_config(page_title="Mood Tracker", page_icon="🧠", layout="centered")
