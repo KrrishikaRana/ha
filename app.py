@@ -1,30 +1,32 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
 import requests
+from streamlit_lottie import st_lottie
 
-# Function to load the Lottie animation from a URL
-def load_lottie_url(url):
+# Set page configuration
+st.set_page_config(page_title="Mood Tracker", layout="centered")
+
+# Load Lottie animation from URL
+def load_lottieurl(url):
     r = requests.get(url)
     if r.status_code != 200:
         return None
     return r.json()
 
-# Load a Lottie animation (this one is a guy waving, but you can change the URL)
-lottie_animation = load_lottie_url("https://assets4.lottiefiles.com/packages/lf20_ZV1fn5lhl.json")
+# Animation URL for "Free Emotions" animation
+lottie_url = "https://lottie.host/f7f84b80-9de7-4b2e-b620-63d64c54a813/CTjzK45nCh.json"
+lottie_json = load_lottieurl(lottie_url)
 
-# Set page config
-st.set_page_config(page_title="Mood Tracker", page_icon="🧠", layout="centered")
+# Title and description
+st.title("🧠 Mood Tracker")
+st.write("Track your emotional health and visualize your mood transitions.")
 
-# Centered title
-st.markdown("<h1 style='text-align: center;'>Mood Tracker App</h1>", unsafe_allow_html=True)
+# Show the animation
+st_lottie(lottie_json, height=300, key="emotions")
 
-# Centered subtitle
-st.markdown("<h3 style='text-align: center;'>Track your emotions daily ✨</h3>", unsafe_allow_html=True)
+# Optional: Mood input section
+st.subheader("How are you feeling today?")
+mood = st.radio("Choose your mood:", ["😊 Happy", "😐 Neutral", "😢 Sad", "😡 Angry", "😴 Tired"])
 
-# Add some spacing
-st.write("")
-st.write("")
-
-# Show Lottie animation centered
-st_lottie(lottie_animation, height=300, key="mood")
-
+# Feedback
+if st.button("Submit"):
+    st.success(f"Mood recorded: {mood}")
