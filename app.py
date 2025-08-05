@@ -9,6 +9,7 @@ def load_lottiefile(filepath: str):
 
 # Load the mood animation
 lottie_mood = load_lottiefile("mood.json")
+lottie_mood = load_lottiefile("jj.json")
 
 # Streamlit page config
 st.set_page_config(page_title="Mood App", layout="wide")
