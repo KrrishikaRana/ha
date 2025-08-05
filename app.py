@@ -20,7 +20,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 # Load the mood animation
-lottie_mood = load_lottiefile("mood.json")
+lottie_mood = load_lottiefile("jj.json")
 
 
 # Streamlit page config
