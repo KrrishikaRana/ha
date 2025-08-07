@@ -6,16 +6,7 @@ import json
 st.set_page_config(page_title="Mood Detector", page_icon="✨", layout="wide")
 
 # Custom CSS for background
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: #87CEEB; /* Sky blue hex */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # Function to load your Lottie animation from a local JSON file
 def load_lottiefile(filepath: str):
