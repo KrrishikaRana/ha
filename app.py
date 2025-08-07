@@ -25,6 +25,18 @@ with col2:
 
 with col2:
     st.title("How's your mood today?")
+    with st.form("mood_form"):
+    name = st.text_input("What's your name?")
+    sleep_hours = st.slider("How many hours did you sleep?", 0, 12, 6)
+    energy_level = st.radio("How energetic do you feel?", ["Low", "Medium", "High"])
+    reason = st.text_area("What's the reason behind your current mood?")
+    
+    submitted = st.form_submit_button("Submit")
+
+if submitted:
+    st.success(f"Thanks {name}, let's check your mood...")
+    # Call prediction logic here
+
    
 # Add more sections below as needed
 
