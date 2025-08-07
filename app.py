@@ -45,7 +45,7 @@ st.markdown(
 
 # Top-left animation
 st.markdown('<div class="top-left">', unsafe_allow_html=True)
-st_lottie(top_left_anim, height=200, key="top_left")
+st_lottie(top_left_anim, height=100, key="top_left")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Centered Heading
@@ -55,7 +55,7 @@ st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsaf
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
-    st_lottie(mood_anim, height=100, key="center_anim")
+    st_lottie(mood_anim, height=200, key="center_anim")
 
     with st.container():
         st.markdown("<div class='form-box'>", unsafe_allow_html=True)
