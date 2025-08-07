@@ -31,7 +31,8 @@ st.set_page_config(page_title="My App", page_icon="✨", layout="wide")
 col1, col2 = st.columns([1, 5])  # You can tweak width ratio if needed
 
 with col1:
-    st_lottie(lottie_animation, height=200)
+    st_lottie(lottie_anim, height=200, key="anim", background="transparent")
+
 
 with col2:
    
