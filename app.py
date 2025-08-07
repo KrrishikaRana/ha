@@ -12,7 +12,7 @@ def load_lottiefile(filepath: str):
 
 # Load two animations
 top_left_anim = load_lottiefile("mood.json")    # Top-left
-mood_anim = load_lottiefile("mood.json")      # Centered
+mood_anim = load_lottiefile("jj.json")      # Centered
 
 # CSS Styling
 st.markdown(
@@ -47,10 +47,6 @@ st.markdown(
 st.markdown('<div class="top-left">', unsafe_allow_html=True)
 st_lottie(top_left_anim, height=100, key="top_left")
 st.markdown('</div>', unsafe_allow_html=True)
-
-#centered animation
-with col2:
-    st_lottie(center_anim, height=200, key="center_anim")
     
 # Centered Heading
 st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
