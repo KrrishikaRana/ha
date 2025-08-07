@@ -1,6 +1,6 @@
 from streamlit_lottie import st_lottie
 import streamlit as st
-pip install streamlit-lottie
+
 
 
 st.set_page_config(page_title="Mood Detector", layout="centered")
