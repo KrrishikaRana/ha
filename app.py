@@ -11,6 +11,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 lottie_anim = load_lottiefile("jj.json")
+lottie_anim = load_lottiefile("mood.json")
 
 # Background styling
 st.markdown(
@@ -39,6 +40,10 @@ st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsaf
 
 # Centered layout
 col1, col2, col3 = st.columns([1, 2, 1])
+st.markdown('<div class="top-left">', unsafe_allow_html=True)
+st_lottie(top_left_anim, height=150, key="top_left_anim")
+st.markdown('</div>', unsafe_allow_html=True)
+
 
 with col2:
     st_lottie(lottie_anim, height=200, key="moodAnim")
