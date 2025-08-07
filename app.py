@@ -52,7 +52,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
 
 # Centered layout
-col1, col2, col3 = st.columns([1, 3, 1])
+col1, col2, col3 = st.columns([1, 1, 1])
 
 with col2:
     st_lottie(mood_anim, height=200, key="center_anim")
