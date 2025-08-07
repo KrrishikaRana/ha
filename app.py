@@ -26,8 +26,8 @@ def load_lottie_file(path: str):
         return json.load(file)
 
 # Load animations
-lottie_top_left = load_lottie_file("lottie_anim1.json")
-lottie_main = load_lottie_file("lottie_anim2.json")
+lottie_top_left = load_lottie_file("mood.json")
+lottie_main = load_lottie_file("jj.json")
 
 # Render top-left animation (injected into a custom div)
 lottie_html = f"""
