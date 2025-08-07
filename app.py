@@ -69,5 +69,22 @@ with col2:
 
         st.markdown("</div>", unsafe_allow_html=True)
 
-if "submitted" in locals() and submitted:
-    st.success(f"Thanks {name}, let's check your mood...")
+# Mood analysis result
+if submitted:
+    st.success(f"Thanks {name}! 👋")
+
+    # Mood logic
+    if sleep_hours < 5 or energy_level == "Low":
+        mood_status = "😴 You might be feeling tired or low. Take care and get some rest!"
+    elif energy_level == "High" and sleep_hours >= 7:
+        mood_status = "🔥 You're on fire today! Keep slaying 💪"
+    else:
+        mood_status = "🙂 You're doing okay. Stay balanced and hydrate 💧"
+
+    st.markdown(f"### Mood Summary: {mood_status}")
+    if reason.strip():
+        st.info(f"Reason noted: _{reason}_")
+    else:
+        st.warning("You didn’t mention the reason behind your mood.")
+
+
