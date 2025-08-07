@@ -26,9 +26,7 @@ st.markdown(
 )
 
 # Show the animation *inside the container*
-st_lottie(top_left_anim, key="lottie_top_left", height=300, width=200)
-
-
+st_lottie(lottie_file, height=400, width=400, key="floating")
 # Centered Heading
 st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
 
