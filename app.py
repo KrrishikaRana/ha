@@ -1,4 +1,18 @@
 import streamlit as st
+st.set_page_config(page_title="Mood Detector", layout="centered")
+
+# Custom CSS to change background color
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #87CEEB; /* Sky blue hex */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 from streamlit_lottie import st_lottie
 import json
 
