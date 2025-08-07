@@ -2,23 +2,24 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 import json
 
-# Set page config
+# Page setup
 st.set_page_config(page_title="Mood Detector", layout="wide")
 
-# Load animation
+# Load Lottie animation from file
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
-lottie_anim = load_lottiefile("jj.json")
-lottie_anim = load_lottiefile("mood.json")
+# Load two animations
+top_left_anim = load_lottiefile("jj.json")    # Top-left
+mood_anim = load_lottiefile("mood.json")      # Centered
 
-# Background styling
+# CSS Styling
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #0d1117; /* dark mode */
+        background-color: #0d1117;
         color: white;
     }
     h1 {
@@ -30,23 +31,31 @@ st.markdown(
         border-radius: 15px;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
+    .top-left {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+        z-index: 999;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Centered title
+# Top-left animation
+st.markdown('<div class="top-left">', unsafe_allow_html=True)
+st_lottie(top_left_anim, height=100, key="top_left")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Centered Heading
 st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
 
 # Centered layout
 col1, col2, col3 = st.columns([1, 2, 1])
-st.markdown('<div class="top-left">', unsafe_allow_html=True)
-st_lottie(top_left_anim, height=150, key="top_left_anim")
-st.markdown('</div>', unsafe_allow_html=True)
-
 
 with col2:
-    st_lottie(lottie_anim, height=200, key="moodAnim")
+    st_lottie(mood_anim, height=200, key="center_anim")
 
     with st.container():
         st.markdown("<div class='form-box'>", unsafe_allow_html=True)
@@ -60,5 +69,5 @@ with col2:
 
         st.markdown("</div>", unsafe_allow_html=True)
 
-if submitted:
+if "submitted" in locals() and submitted:
     st.success(f"Thanks {name}, let's check your mood...")
