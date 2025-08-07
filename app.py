@@ -45,7 +45,7 @@ st.markdown(
 
 # Top-left animation
 st.markdown('<div class="top-left">', unsafe_allow_html=True)
-st_lottie(top_left_anim, height=100, key="top_left")
+st_lottie(top_left_anim, height=200, key="top_left")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Centered Heading
