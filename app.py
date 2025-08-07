@@ -1,4 +1,5 @@
 import streamlit as st
+pip install streamlit-lottie
 from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title="Mood Detector", layout="centered")
@@ -15,7 +16,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-from streamlit_lottie import st_lottie
+
 import json
 
 # Function to load your Lottie animation
