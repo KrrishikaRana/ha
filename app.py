@@ -11,7 +11,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 # Load two animations
-top_left_anim = load_lottiefile("mood.json")    # Top-left
+top_left_anim = load_lottiefile("jj.json")    # Top-left
 mood_anim = load_lottiefile("mood.json")      # Centered
 
 # CSS Styling
