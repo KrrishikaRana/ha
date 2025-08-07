@@ -26,7 +26,7 @@ st.markdown(
 )
 
 # Show the animation *inside the container*
-st_lottie(top_left_anim, key="lottie_top_left", height=100, width=200)
+st_lottie(top_left_anim, key="lottie_top_left", height=300, width=200)
 
 
 # Centered Heading
