@@ -17,36 +17,16 @@ mood_anim = load_lottiefile("mood.json")      # Centered
 # CSS Styling
 st.markdown(
     """
-    <style>
-    .stApp {
-        background-color: #0d1117;
-        color: white;
-    }
-    h1 {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .form-box {
-        background-color: #161b22;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
-    .top-left {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 200px;
-        z-index: 999;
-    }
-    </style>
+    <div style="position: fixed; top: 0; left: 0; z-index: 9999; width: 200px;">
+        <div id="lottie-container"></div>
+    </div>
     """,
     unsafe_allow_html=True
 )
 
-# Top-left animation
-st.markdown('<div class="top-left">', unsafe_allow_html=True)
-st_lottie(top_left_anim, height=100, key="top_left")
-st.markdown('</div>', unsafe_allow_html=True)
+# Show the animation *inside the container*
+st_lottie(top_left_anim, key="lottie_top_left", height=200, width=200)
+
 
 # Centered Heading
 st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
