@@ -1,43 +1,73 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
 import json
-import requests
 
-# Custom CSS to position and style the Lottie animation
-st.markdown("""
+# Page setup
+st.set_page_config(page_title="Mood Detector", layout="wide")
+
+# Load Lottie animation from file
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+# Load two animations
+top_left_anim = load_lottiefile("jj.json")    # Top-left
+mood_anim = load_lottiefile("mood.json")      # Centered
+
+# CSS Styling
+st.markdown(
+    """
     <style>
-        .lottie-top-left {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 300px; /* bigger size */
-            height: 300px;
-            z-index: 999;
-        }
-        .block-container {
-            padding-top: 100px;
-        }
+    .stApp {
+        background-color: #0d1117;
+        color: white;
+    }
+    h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .form-box {
+        background-color: #161b22;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    .top-left {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+        z-index: 999;
+    }
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
 
-# Load Lottie from file
-def load_lottie_file(path: str):
-    with open(path, "r") as file:
-        return json.load(file)
+# Top-left animation
+st.markdown('<div class="top-left">', unsafe_allow_html=True)
+st_lottie(top_left_anim, height=100, key="top_left")
+st.markdown('</div>', unsafe_allow_html=True)
 
-# Load animations
-lottie_top_left = load_lottie_file("mood.json")
-lottie_main = load_lottie_file("jj.json")
+# Centered Heading
+st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
 
-# Render top-left animation (injected into a custom div)
-lottie_html = f"""
-<div class="lottie-top-left">
-    {st_lottie(lottie_top_left, height=300, width=300, key="left")}
-</div>
-"""
-st.components.v1.html(lottie_html, height=0)
+# Centered layout
+col1, col2, col3 = st.columns([1, 2, 1])
 
-# Main content
-st.title("Main Content Area")
-st_lottie(lottie_main, height=250, key="main")
+with col2:
+    st_lottie(mood_anim, height=200, key="center_anim")
 
+    with st.container():
+        st.markdown("<div class='form-box'>", unsafe_allow_html=True)
+
+        with st.form("mood_form"):
+            name = st.text_input("What's your name?")
+            sleep_hours = st.slider("How many hours did you sleep?", 0, 12, 6)
+            energy_level = st.radio("How energetic do you feel?", ["Low", "Medium", "High"])
+            reason = st.text_area("What's the reason behind your current mood?")
+            submitted = st.form_submit_button("Submit")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+if "submitted" in locals() and submitted:
+    st.success(f"Thanks {name}, let's check your mood...")
