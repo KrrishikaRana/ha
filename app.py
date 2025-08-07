@@ -34,7 +34,7 @@ st.markdown(
     .top-left {
         position: absolute;
         top: 10px;
-        left: 10px;
+        left: 30px;
         width: 200px;
         z-index: 999;
     }
