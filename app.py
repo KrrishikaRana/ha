@@ -1,69 +1,56 @@
+
 import streamlit as st
 from streamlit_lottie import st_lottie
 import json
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Page setup
-st.set_page_config(page_title="Mood Detector", layout="wide")
+st.set_page_config(layout="wide")
 
-# Load Lottie animation from file
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
+# Load lottie
+def load_lottiefile(path: str):
+    with open(path, "r") as f:
         return json.load(f)
 
-# Load two animations
-   # Top-left
-mood_anim = load_lottiefile("jj.json") 
-top_left_anim = load_lottiefile("mood.json") # Centered
+mood_anim = load_lottiefile("jj.json")
 
-# CSS Styling
-st.markdown(
-    """
-    <div style="position: fixed; top: 0; left: 0; z-index: 9999; width: 200px;">
-        <div id="lottie-container"></div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# --- PAGE STATE ---
+if "page" not in st.session_state:
+    st.session_state.page = "home"  # default
 
-# Show the animation *inside the container*
-st_lottie(top_left_anim, height=200, width=200, key="floating")
-# Centered Heading
-st.markdown("<h1 style='text-align: center;'>How's your mood today?</h1>", unsafe_allow_html=True)
+# --- FUNCTIONS ---
+def go_to_chart():
+    st.session_state.page = "chart"
 
-# Centered layout
-col1, col2, col3 = st.columns([1, 2, 1])
+# --- PAGE 1: HOME ---
+if st.session_state.page == "home":
+    st.markdown("<h1 style='text-align:center;'>Mood Detector</h1>", unsafe_allow_html=True)
 
-with col2:
-    st_lottie(mood_anim, height=300, key="center_anim")
+    # Wrap animation with a "button" effect
+    if st.button("📊 View Mood Tracker Chart"):
+        go_to_chart()
 
-    with st.container():
-        st.markdown("<div class='form-box'>", unsafe_allow_html=True)
+    st_lottie(mood_anim, height=200, key="center_anim")
 
-        with st.form("mood_form"):
-            name = st.text_input("What's your name?")
-            sleep_hours = st.slider("How many hours did you sleep?", 0, 12, 6)
-            energy_level = st.radio("How energetic do you feel?", ["Low", "Medium", "High"])
-            reason = st.text_area("What's the reason behind your current mood?")
-            submitted = st.form_submit_button("Submit")
+# --- PAGE 2: CHART ---
+elif st.session_state.page == "chart":
+    st.markdown("## 📈 Mood Tracking History")
 
-        st.markdown("</div>", unsafe_allow_html=True)
+    # Fake data for demo
+    df = pd.DataFrame({
+        "Date": pd.date_range(start="2025-08-01", periods=7),
+        "Mood Score": [6, 7, 8, 5, 9, 6, 7]
+    })
 
-# Mood analysis result
-if submitted:
-    st.success(f"Thanks {name}! 👋")
+    # Plot
+    fig, ax = plt.subplots()
+    ax.plot(df["Date"], df["Mood Score"], marker='o')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Mood Score (1-10)")
+    ax.set_title("Mood Tracker Over Time")
+    st.pyplot(fig)
 
-    # Mood logic
-    if sleep_hours < 5 or energy_level == "Low":
-        mood_status = "😴 You might be feeling tired or low. Take care and get some rest!"
-    elif energy_level == "High" and sleep_hours >= 7:
-        mood_status = "🔥 You're on fire today! Keep slaying 💪"
-    else:
-        mood_status = "🙂 You're doing okay. Stay balanced and hydrate 💧"
-
-    st.markdown(f"### Mood Summary: {mood_status}")
-    if reason.strip():
-        st.info(f"Reason noted: _{reason}_")
-    else:
-        st.warning("You didn’t mention the reason behind your mood.")
+    if st.button("⬅ Back"):
+        st.session_state.page = "home"
 
 
