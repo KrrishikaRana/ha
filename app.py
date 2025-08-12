@@ -27,7 +27,6 @@ genz_lines = [
 random_line, random_color = random.choice(genz_lines)
 
 # --- PAGE ---
-st.markdown("<h1 style='text-align:center;'>Mood check: vibin’ or surviving?</h1>", unsafe_allow_html=True)
 
 # Aesthetic Gen Z line in center
 st.markdown(
