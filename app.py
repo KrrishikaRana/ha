@@ -42,7 +42,7 @@ st.markdown(
 )
 st.markdown(
     """
-    <div style="position: fixed; top: 10px; left: 10px; z-index: 9999;">
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 9999;">
     """,
     unsafe_allow_html=True
 )
