@@ -46,4 +46,4 @@ st.markdown(
 # Mood animation centered
 col1, col2, col3 = st.columns([1, 3, 1])
 with col2:
-    st_lottie(mood_anim, height=600, key="center_anim")
+    st_lottie(mood_anim, height=800, key="center_anim")
