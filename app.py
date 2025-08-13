@@ -51,13 +51,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <div style="position: absolute; top: 10px; left: 10px; z-index: 9999;">
-    """,
-    unsafe_allow_html=True
-)
-st_lottie(extra_anim, height=150, key="extra_anim")
+
 st.markdown("</div>", unsafe_allow_html=True)
 # Mood animation centered
 col1, col2, col3 = st.columns([1, 2, 1])
