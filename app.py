@@ -56,3 +56,12 @@ st.markdown(
 st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
 st_lottie(mood_anim, height=300, key="center_anim")
 st.markdown("</div>", unsafe_allow_html=True)
+<div style="position: fixed; bottom: 20px; right: 20px;">
+    <iframe width="200" height="113" 
+        src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&loop=1&playlist=jfKfPfyJRdk" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
+
