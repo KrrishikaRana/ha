@@ -15,7 +15,7 @@ mood_anim = load_lottiefile("jj.json")
 extra_anim = load_lottiefile("mood.json") 
 st.markdown(
     """
-    <div style="position: fixed; top: 0; left: 0; z-index: 9999; width: 400px;">
+    <div style="position: fixed; top: 0; left: 0; z-index: 9999; width: 800px;">
         <div id="lottie-container"></div>
     </div>
     """,
