@@ -23,7 +23,7 @@ st.markdown(
 )
 
 # Show the animation *inside the container*
-st_lottie(extra_anim , key="extra_anim ", height=200, width=200)
+st_lottie(extra_anim , key="extra_anim ", height=400, width=200)
 # --- GEN Z MOTIVATIONAL LINES ---
 genz_lines = [
     ("Serving moods, not excuses ", "#8be9fd"),
