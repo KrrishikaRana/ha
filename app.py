@@ -13,6 +13,17 @@ def load_lottiefile(path: str):
 
 mood_anim = load_lottiefile("jj.json")
 extra_anim = load_lottiefile("mood.json") 
+st.markdown(
+    """
+    <div style="position: fixed; top: 0; left: 0; z-index: 9999; width: 200px;">
+        <div id="lottie-container"></div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Show the animation *inside the container*
+st_lottie(lottie_top_left, key="lottie_top_left", height=200, width=200)
 # --- GEN Z MOTIVATIONAL LINES ---
 genz_lines = [
     ("Serving moods, not excuses ", "#8be9fd"),
