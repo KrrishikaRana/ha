@@ -54,5 +54,5 @@ st.markdown(
 
 # --- Mood animation under the text ---
 st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
-st_lottie(mood_anim, height=300, width=300, key="center_anim")
+st_lottie(mood_anim, height=300, key="center_anim")
 st.markdown("</div>", unsafe_allow_html=True)
