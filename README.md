@@ -30,17 +30,17 @@ git clone https://github.com/KrrishikaRana/ha.git
 cd ha
 Install dependencies
 
-bash
-Copy code
+
+
 pip install streamlit streamlit-lottie
 Run the app
 
-bash
-Copy code
+
+
 streamlit run app.py
 📂 Project Structure
-bash
-Copy code
+
+
 ha/
 │── app.py              # Main Streamlit app
 │── jj.json             # Lottie animation file
@@ -74,5 +74,4 @@ Krrishika Rana ✨
 
 ⚡ Zero mood swings, only plot twists! 📖
 
-yaml
-Copy code
+
